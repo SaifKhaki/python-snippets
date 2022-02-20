@@ -545,6 +545,349 @@
             "",
             "s1 = A()"
         ]
+    },
+    "read file from command line": {
+        "prefix": "read file from command line, read command line, read comman line arguments, fetch command line argument",
+        "body": [
+            "# read file from command line",
+            "import sys",
+            "f = open(str(sys.argv[1]), 'r')",
+            "lineCount = 0",
+            "while True:",
+            "\tline = f.readline()",
+            "\tif not line:",
+            "\t\tbreak",
+            "\tlineCount += 1",
+            "\t#####################################################",
+            "\tprint(line)",
+            "\t#####################################################",
+            "f.close()"
+        ]
+    },
+    "Design Pattern: Abstract Example": {
+        "prefix": "Design Pattern- Abstract Example",
+        "body": [
+            "# abstract example",
+            "from abc import ABC, abstractmethod",
+            "class radio_abstract(ABC):",
+            "   ",
+            "\t@abstractmethod",
+            "\tdef play_song_on_radio(self):",
+            "\t\tpass",
+            "   ",
+            "\tdef change_channel(self):",
+            "\t\tpass",
+            "\t\t  ",
+            "class Car(radio_abstract):",
+            "\tdef __init__(self) -> None:",
+            "\t\tpass",
+            "  ",
+            "\tdef play_song_on_radio(self):",
+            "\t\tprint(\"Playing song from dashboard.\")",
+            "  ",
+            "class Mobile(radio_abstract):",
+            "\tdef __init__(self) -> None:",
+            "\t\tpass",
+            "  ",
+            "\tdef play_song_on_radio(self):",
+            "\t\tprint(\"Playing song from radio app.\")",
+            "",
+            "car = Car()",
+            "car.play_song_on_radio()",
+            ""
+        ]
+    },
+    "Abstract methods": {
+        "prefix": "Abstract methods, abstract classes, Abstract",
+        "body": [
+            "# abstract example",
+            "from abc import ABC, abstractmethod",
+            "class radio_abstract(ABC):",
+            "   ",
+            "\t@abstractmethod",
+            "\tdef play_song_on_radio(self):",
+            "\t\tpass",
+            "   ",
+            "\tdef change_channel(self):",
+            "\t\tpass",
+            "\t\t  ",
+            "class Car(radio_abstract):",
+            "\tdef __init__(self) -> None:",
+            "\t\tpass",
+            "  ",
+            "\tdef play_song_on_radio(self):",
+            "\t\tprint(\"Playing song from dashboard.\")",
+            "  ",
+            "class Mobile(radio_abstract):",
+            "\tdef __init__(self) -> None:",
+            "\t\tpass",
+            "  ",
+            "\tdef play_song_on_radio(self):",
+            "\t\tprint(\"Playing song from radio app.\")",
+            "",
+            "car = Car()",
+            "car.play_song_on_radio()",
+            ""
+        ]
+    },
+    "Mixins": {
+        "prefix": "Mixins, Mixin methods, Mixin class",
+        "body": [
+            "# mixin example",
+            "class radioMixin():",
+            "\tdef play_song_on_radio(self):",
+            "\t\tprint(\"playing song...\")",
+            "\t  ",
+            "class Car(radioMixin):",
+            "\tdef __init__(self) -> None:",
+            "\t\tpass",
+            "  ",
+            "class Mobile(radioMixin):",
+            "\tdef __init__(self) -> None:",
+            "\t\tpass",
+            "",
+            "car = Car()",
+            "car.play_song_on_radio()",
+            ""
+        ]
+    },
+    "Design Pattern: Adapter": {
+        "prefix": "Design Pattern: Adapter",
+        "body": [
+            "# Adapter design pattern",
+            "class two_pin_socket:",
+            "\tdef putInSocket(self, plugType) -> str:",
+            "\t\tif plugType != \"three pin plug\":",
+            "\t\t\treturn \"Charging...\"",
+            "\t\telse:",
+            "\t\t\tprint(\"Socket says: Not supported\")",
+            "\t\t\treturn None",
+            "",
+            "class Adapter(two_pin_socket):",
+            "\tdef putIn(self) -> str:",
+            "\t\tprint(\"Adapter says: \", self.putInSocket(\"two pin plig\"))",
+            "",
+            "two_pin_socket = two_pin_socket()",
+            "two_pin_socket.putInSocket(\"three pin plug\")",
+            "",
+            "adapter = Adapter()",
+            "adapter.putIn()",
+            ""
+        ]
+    },
+    "Design Pattern - Facade": {
+        "prefix": "Design Pattern - Facade",
+        "body": [
+            "# facade design pattern",
+            "class kitchen:",
+            "\tdef cook(self) -> str:",
+            "\t\treturn \"Food is cooked.\"",
+            "",
+            "\tdef plating(self) -> str:",
+            "\t\treturn \"Order is ready.\"",
+            "",
+            "class accountant:",
+            "\tdef make_bill(self) -> str:",
+            "\t\treturn \"Bill is ready.\"",
+            "",
+            "\tdef pay_bill(self) -> str:",
+            "\t\treturn \"Bill is paid.\"",
+            "  ",
+            "class waiter:",
+            "\tdef __init__(self, kitchen: kitchen, accountant: accountant):",
+            "\t\tself._kitchen = kitchen or kitchen()",
+            "\t\tself._accountant = accountant or accountant()",
+            "",
+            "\tdef take_order(self) -> str:",
+            "\t\tresults = []",
+            "\t\tresults.append(\"Order is taken.\")",
+            "\t\tresults.append(self._kitchen.cook())",
+            "\t\tresults.append(self._kitchen.plating())",
+            "\t\tresults.append(\"Waiter is bringing the order.\")",
+            "\t\tresults.append(self._accountant.make_bill())",
+            "\t\tresults.append(self._accountant.pay_bill())",
+            "\t\treturn \"\\n\".join(results)",
+            "",
+            "def order(waiter: waiter):",
+            "\tprint(waiter.take_order(), end=\"\")",
+            "",
+            "kitchen_work = kitchen()",
+            "accounting_work = accountant()",
+            "waiter = waiter(kitchen_work, accounting_work)",
+            "",
+            "order(waiter)",
+            ""
+        ]
+    },
+    "Design Pattern - Abstract Factory": {
+        "prefix": "Design Pattern - Abstract Factory",
+        "body": [
+            "# abstract factory design pattern",
+            "from __future__ import annotations",
+            "from abc import ABC, abstractmethod",
+            "class vehicle(ABC):",
+            "\t@abstractmethod",
+            "\tdef drive(self):",
+            "\t\tpass",
+            "",
+            "\t@abstractmethod",
+            "\tdef repair(self):",
+            "\t\tpass",
+            "",
+            "class car(vehicle):",
+            "\tdef drive(self):",
+            "\t\tprint(\"Vehicle: Car Driving\")",
+            "",
+            "\tdef repair(self):",
+            "\t\tprint(\"Vehicle: Car Repairing\")",
+            "",
+            "class bike(vehicle):",
+            "\tdef drive(self):",
+            "\t\tprint(\"Vehicle: Bike Driving\")",
+            "",
+            "\tdef repair(self):",
+            "\t\tprint(\"Vehicle: Bike Repairing\")",
+            "",
+            "def driver(vehicle: vehicle):",
+            "\tvehicle.repair()",
+            "\tvehicle.drive()",
+            "",
+            "driver(car())",
+            "driver(bike())",
+            "",
+            ""
+        ]
+    },
+    "Nested for loop in single line": {
+        "prefix": "two for loops in single line, nested for loop in single line, single liner nester for loop, single liner two for loops",
+        "body": [
+            "# nested for loop",
+            "l = [i+j for i in range(5) for j in range(5)]",
+            "print(l)",
+            ""
+        ]
+    },
+    "Replace a string": {
+        "prefix": "replace string, swap string, replace part of string",
+        "body": [
+            "# replace",
+            "\"python is a language\".replace(\"language\",'snake.')",
+            "",
+            ""
+        ]
+    },
+    "Count in string": {
+        "prefix": "Count number of occurrences in string, count, find in string, findall in string",
+        "body": [
+            "# count of word in string",
+            "import re; ",
+            "l = len(re.findall('a','aaaaaaaaaaaaa'))",
+            "print(l)"
+        ]
+    },
+    "findmin function": {
+        "prefix": "findmin, find minimum, calculate smaller value, smaller value",
+        "body": [
+            "# find min",
+            "findmin = lambda x,y: x if x < y else y ",
+            "findmin(5,14)"
+        ]
+    },
+    "findmax": {
+        "prefix": "Findmax, find maximum element, calculate greater number, find greater",
+        "body": [
+            "# find max",
+            "findmax = lambda x,y: x if x > y else y ",
+            "findmax(5,14)",
+            ""
+        ]
+    },
+    "fibonacchi series": {
+        "prefix": "Fibonacchi Series",
+        "body": [
+            "# fibonacci series",
+            "fibo = [0,1]",
+            "[fibo.append(fibo[-2]+fibo[-1]) for i in range(5)]",
+            "print(fibo)"
+        ]
+    },
+    "Print pyramid": {
+        "prefix": "Print pyramid, single liner for loop for pyramid",
+        "body": [
+            "# pyramid",
+            "n = 5",
+            "print('\\n'.join('😀' * i for i in range(1, n + 1)))",
+            ""
+        ]
+    },
+    "check palindrome": {
+        "prefix": "palindrome, string equals its reverse",
+        "body": [
+            "# check palindrome",
+            "print(text == text[::-1])",
+            ""
+        ]
+    },
+    "single liner if else and for ": {
+        "prefix": "single liner for loop with if and else, for if else, single liner if else with for",
+        "body": [
+            "# if else in for loop",
+            "li = ['Saiman' if i%3==0 and i%5==0 else 'Aiman' if i%3==0 else 'Saif' if i%5==0 else i for i in range(1,20)]",
+            "print(li)",
+            ""
+        ]
+    },
+    "Type casting": {
+        "prefix": "Type casting, change type, type change of variable, change type of list",
+        "body": [
+            "# type casting",
+            "int_list = list(map(int, [\"1\",\"2\"]))",
+            "print(int_list)",
+            ""
+        ]
+    },
+    "Trim line": {
+        "prefix": "Trim line, srip line, remove null and void and new line character",
+        "body": [
+            "# # trim line, strip line",
+            "line = \"aiman is good\t\t\t\\nq\"",
+            "line = line.strip()",
+            "print(line)"
+        ]
+    },
+    "Delete multiple from list": {
+        "prefix": "Delete multiple elements from list, delete from list, delete range from list, remove from list",
+        "body": [
+            "# delete from list",
+            "a = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]",
+            "del a[0:len(a):4]",
+            "print(a)"
+        ]
+    },
+    "Single liner sum of list": {
+        "prefix": "Sum of list, single liner sum of list, single liner sum , sum",
+        "body": [
+            "# sum of list",
+            "sum = sum([i for i in li if i%2 == 0])",
+            ""
+        ]
+    },
+    "Single liner list creation": {
+        "prefix": "Single liner list creation, create list from list, for if, create list from if and for, single liner if and for",
+        "body": [
+            "# list creation",
+            "li = [1,2,3,6,8,12,14]",
+            "s = [i**2 for i in li if i % 2 == 0]",
+            "print(s)",
+            ""
+        ]
+    },
+    "Variable assignment": {
+        "prefix": "SIngle liner swap variables, swap, variable assignment",
+        "body": [
+            "# variable assignments",
+            "a,b = 1,2",
+            "a,*b = [1,2,3,4,5]"
+        ]
     }
-
 }
